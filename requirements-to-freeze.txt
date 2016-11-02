@@ -1,0 +1,9 @@
+Flask
+Flask-Script
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-Bootstrap
+Flask-Login
+Flask-Mail
+Celery
+redis
