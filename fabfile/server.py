@@ -44,7 +44,7 @@ def install_virtualenv():
 def install_supervisor():
     if not exists('/usr/bin/supervisorctl'):
         sudo('apt-get -y install supervisor')
-        sudo('service supervisor restart')
+        sudo('service supervisor start')
         # 设置开机启动
         sudo('update-rc.d supervisor defaults')
         # in ubuntu 16.04
