@@ -10,7 +10,7 @@ from fabric.operations import put
 from . import conf_file
 from .config import (
     NAME, DOMAIN, REPOSITORY, DEFAULT_BRANCH, WEB_ROOT_DIR, VIRTUALENV_NAME,
-    SOCKET, UWSGI_LOG_DIR, TOUCH_FILE)
+    SOCKET, UWSGI_LOG_DIR, TOUCH_FILE, ENVIRONMENT)
 
 
 def setup_dirs():
@@ -65,6 +65,8 @@ def config_supervisor():
         put(local_path, remote_path, use_sudo=True)
         sed(remote_path, '<name>', NAME, use_sudo=True, backup='')
         uwsgi_ini_file = os.path.join(WEB_ROOT_DIR, 'www/uwsgi.ini')
+        sed(remote_path, '<environment>', ENVIRONMENT,
+            use_sudo=True, backup='')
         sed(remote_path, '<uwsgi_ini_file>', uwsgi_ini_file,
             use_sudo=True, backup='')
     sudo('supervisorctl reread')

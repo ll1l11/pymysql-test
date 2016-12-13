@@ -7,6 +7,7 @@ DOMAIN = 'www.example.com'
 REPOSITORY = 'https://github.com/codeif/flask-demo.git'
 # REPOSITORY = 'git@github.com:codeif/flask-demo.git'
 DEFAULT_BRANCH = ''
+CONFIG_CLASS_NAME = 'ProductionConfig'
 
 
 # read from uwsgi.ini
@@ -21,8 +22,11 @@ if m:
     NAME = m.group(1)
 else:
     NAME = 'demo'
-WEB_ROOT_DIR = os.path.dirname(pythonpath)
 # WEB_ROOT_DIR = '/srv/' + NAME
+WEB_ROOT_DIR = os.path.dirname(pythonpath)
+# ENVIRONMENT='DEMO_APP_SETTINGS="demo.config.{}"'.format(CONFIG_CLASS_NAME)
+ENVIRONMENT = '{}_APP_SETTINGS="{}.config.{}"'.format(NAME.upper(), NAME,
+                                                      CONFIG_CLASS_NAME)
 TOUCH_FILE = items.get('touch-reload')
 VIRTUALENV_NAME = items['virtualenv'].rsplit('/', 1)[-1]
 SOCKET = items['socket']
