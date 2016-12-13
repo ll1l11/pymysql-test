@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import os.path
+import re
 import ConfigParser
 
-NAME = 'demo'
 DOMAIN = 'www.example.com'
 REPOSITORY = 'https://github.com/codeif/flask-demo.git'
 # REPOSITORY = 'git@github.com:codeif/flask-demo.git'
@@ -15,7 +15,13 @@ uwsgi_ini_file = os.path.join(os.path.dirname(__file__), '../uwsgi.ini')
 config.read(uwsgi_ini_file)
 items = dict(config.items('uwsgi'))
 
-WEB_ROOT_DIR = os.path.dirname(items['pythonpath'])
+pythonpath = items['pythonpath']
+m = re.search('/(\w+)/www', pythonpath)
+if m:
+    NAME = m.group(1)
+else:
+    NAME = 'demo'
+WEB_ROOT_DIR = os.path.dirname(pythonpath)
 # WEB_ROOT_DIR = '/srv/' + NAME
 TOUCH_FILE = items.get('touch-reload')
 VIRTUALENV_NAME = items['virtualenv'].rsplit('/', 1)[-1]
