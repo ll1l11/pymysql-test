@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import pkgutil
 import importlib
 from datetime import datetime, date, time
 from numbers import Number
@@ -7,24 +6,23 @@ from decimal import Decimal
 
 from flask import Blueprint
 
+from werkzeug.utils import find_modules
 
-def register_blueprints(app, module_prefix, package_path):
+
+def register_blueprints(app, import_path, bp_name='bp'):
     """Register all Blueprint instances on the specified Flask application found
     in all modules for the specified package.
 
     :param app: the Flask application
-    :param module_prefix: a string on the front of every module name
-    :param package_path: a path to look for modules in
+    :param import_path: the dotted path for the package to find child modules.
+    :param bp_name: Blueprint name in views.
     """
-    rv = []
-    for _, name, _ in pkgutil.iter_modules([package_path], module_prefix):
-        m = importlib.import_module(name)
-        for item in dir(m):
-            item = getattr(m, item)
-            if isinstance(item, Blueprint):
-                app.register_blueprint(item)
-            rv.append(item)
-    return rv
+    pass
+    for name in find_modules(import_path, include_packages=True):
+        mod = importlib.import_module(name)
+        bp = getattr(mod, bp_name, None)
+        if isinstance(bp, Blueprint):
+            app.register_blueprint(bp)
 
 
 class JSONSerializer(object):
