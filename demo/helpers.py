@@ -17,7 +17,6 @@ def register_blueprints(app, import_path, bp_name='bp'):
     :param import_path: the dotted path for the package to find child modules.
     :param bp_name: Blueprint name in views.
     """
-    pass
     for name in find_modules(import_path, include_packages=True):
         mod = importlib.import_module(name)
         bp = getattr(mod, bp_name, None)
