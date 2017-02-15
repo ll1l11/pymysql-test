@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ..ext import db
+from ..core import db
 from ..helpers import JSONSerializer
 
 

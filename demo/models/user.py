@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy import event, DDL
 
-from ..ext import db
+from ..core import db
 from . import BaseModel
 
 
