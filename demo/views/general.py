@@ -2,14 +2,32 @@
 from flask import Blueprint
 from flask.views import MethodView
 
+from ..exceptions import NoError, LoginRequired, FormValidationError
+
+from ..forms.login import LoginForm
+
 
 bp = Blueprint('general', __name__)
 
 
 class IndexView(MethodView):
-
     def get(self):
-        return 'index'
+        raise NoError()
+
+
+class ErrorView(MethodView):
+    def get(self):
+        raise LoginRequired()
+
+
+class FormErrorView(MethodView):
+    def get(self):
+        form = LoginForm()
+        if not form.validate():
+            raise FormValidationError(form)
+        raise NoError()
 
 
 bp.add_url_rule('/', view_func=IndexView.as_view('index'))
+bp.add_url_rule('/error', view_func=ErrorView.as_view('error'))
+bp.add_url_rule('/form-error', view_func=FormErrorView.as_view('form_error'))
