@@ -24,6 +24,17 @@ def register_blueprints(app, import_path, bp_name='bp'):
             app.register_blueprint(bp)
 
 
+def register_api(bp, view, endpoint, url, pk='item_id', pk_type='int'):
+    """register restful api router"""
+    view_func = view.as_view(endpoint)
+    bp.add_url_rule(url, defaults={pk: None},
+                    view_func=view_func, methods=['GET'])
+    bp.add_url_rule(url, view_func=view_func, methods=['POST'])
+    bp.add_url_rule('{0}<{1}:{2}>'.format(url, pk_type, pk),
+                    view_func=view_func,
+                    methods=['GET', 'PUT', 'DELETE', 'PATCH'])
+
+
 class JSONSerializer(object):
     _json_include = None
     _json_exclude = None
@@ -62,7 +73,7 @@ class JSONSerializer(object):
         if only:
             return only
 
-        exclude_set = {'password'}
+        exclude_set = {'password', 'insert_time'}
         if self._json_exclude:
             exclude_set.update(self._json_exclude)
         if exclude:
@@ -86,7 +97,6 @@ class JSONSerializer(object):
         return data or None
 
     def to_json_simple(self):
-        only = self._todict_simple_keys()
-        if not only:
-            only = set(x for x in self.get_field_names if x in {'id', 'name'})
+        only = self._json_simple or \
+                [x for x in self.get_field_names() if x in ['id', 'name']]
         return self.to_json(only=only)
