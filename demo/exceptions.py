@@ -11,13 +11,15 @@ exceptions = [
 ]
 
 
-class CustomBaseException(Exception):
+class BaseCustomException(Exception):
     errcode = 1000
     errmsg = 'Server Unkown Error.'
 
-    def __init__(self, errmsg=None):
+    def __init__(self, errmsg=None, errcode=None):
         if errmsg:
             self.errmsg = errmsg
+        if errcode is not None:
+            self.errcode = errcode
 
     def __str__(self):
         return '%d: %s' % (self.errcode, self.errmsg)
@@ -26,7 +28,7 @@ class CustomBaseException(Exception):
         return '<%s \'%s\'>' % (self.__class__.__name__, self)
 
 
-class CustomException(CustomBaseException):
+class CustomException(BaseCustomException):
     pass
 
 
@@ -37,7 +39,7 @@ for name, errcode, errmsg in exceptions:
     setattr(current_module, name, cls)
 
 
-class FormValidationError(CustomBaseException):
+class FormValidationError(BaseCustomException):
     errcode = 2001
     errmsg = '表单验证错误'
 
