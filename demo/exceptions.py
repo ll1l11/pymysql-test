@@ -43,6 +43,8 @@ class FormValidationError(BaseCustomException):
     errcode = 2001
     errmsg = '表单验证错误'
 
-    def __init__(self, form, errmsg=None):
+    def __init__(self, form, errmsg=None, show_first_err=True):
+        if not errmsg and show_first_err:
+            errmsg = next(iter(form.errors.values()))[0]
         super(FormValidationError, self).__init__(errmsg)
         self.errors = form.errors
