@@ -98,5 +98,5 @@ class JSONSerializer(object):
 
     def to_json_simple(self):
         only = self._json_simple or \
-                [x for x in self.get_field_names() if x in ['id', 'name']]
+               [x for x in self.get_field_names() if x in ['id', 'name']]
         return self.to_json(only=only)
