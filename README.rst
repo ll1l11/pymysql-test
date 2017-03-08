@@ -32,7 +32,7 @@ Celery的supervisor配置::
 
     [program:demo-celery]
     environment=DEMO_APP_SETTINGS="demo.config.ProductionConfig"
-    command=/home/ubuntu/.virtualenvs/demo/bin/celery worker -A demo.tasks --loglevel=INFO
+    command=/home/ubuntu/.virtualenvs/demo/bin/celery -A demo.tasks worker --loglevel=INFO
 
     directory=/srv/demo/www
     user=www-data
