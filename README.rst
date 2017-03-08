@@ -29,13 +29,14 @@ secret_key生成方式::
 Celery的supervisor配置::
 
     [program:demo-celery]
+    environment=DEMO_APP_SETTINGS="demo.config.ProductionConfig"
     command=/home/ubuntu/.virtualenvs/demo/bin/celery worker -A demo.tasks --loglevel=INFO
 
-    directory=/data/web/demo
+    directory=/srv/demo/www
     user=www-data
     numprocs=1
-    stdout_logfile=/var/log/demo/celery-stdout.log
-    stderr_logfile=/var/log/demo/celery-stderr.log
+    stdout_logfile=/var/log/celery/demo-stdout.log
+    stderr_logfile=/var/log/celery/demo-stderr.log
     autostart=true
     autorestart=true
     startsecs=10
