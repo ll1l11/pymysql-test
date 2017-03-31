@@ -11,7 +11,7 @@ class Config(object):
     SQLALCHEMY_ECHO = False
 
     # Celery config
-    BROKER_URL = 'redis://127.0.0.1:6379/1'
+    CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'
     CELERY_ACCEPT_CONTENT = ['json']
     CELERY_TASK_SERIALIZER = 'json'
 
@@ -25,3 +25,7 @@ class Config(object):
 
 class ProductionConfig(Config):
     pass
+
+
+class DevelopmentConfig(Config):
+    DEBUG = True

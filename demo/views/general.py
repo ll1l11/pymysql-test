@@ -5,6 +5,7 @@ from flask.views import MethodView
 from ..exceptions import NoError, LoginRequired, FormValidationError
 
 from ..forms.login import LoginForm
+from ..tasks import add
 
 
 bp = Blueprint('general', __name__)
@@ -28,6 +29,13 @@ class FormErrorView(MethodView):
         raise NoError()
 
 
+class CeleryTestView(MethodView):
+    def get(self):
+        add.delay(1, 3)
+        return 'ok'
+
+
 bp.add_url_rule('/', view_func=IndexView.as_view('index'))
 bp.add_url_rule('/error', view_func=ErrorView.as_view('error'))
 bp.add_url_rule('/form-error', view_func=FormErrorView.as_view('form_error'))
+bp.add_url_rule('/celery-test', view_func=CeleryTestView.as_view('celery_test'))

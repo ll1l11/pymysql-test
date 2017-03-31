@@ -8,7 +8,7 @@ def create_app(config=None):
     app = Flask(__name__)
 
     if config is None:
-        config = os.environ.get('FLASK_DEMO_SETTINGS', 'demo.config.Config')
+        config = os.environ.get('DEMO_APP_SETTINGS', 'demo.config.Config')
     app.config.from_object(config)
 
     return app
@@ -16,8 +16,11 @@ def create_app(config=None):
 
 def create_celery_app(app=None):
     app = app or create_app()
-    celery = Celery()
+    celery = Celery(app.import_name,
+                    backend=app.config.get('CELERY_RESULT_BACKEND'),
+                    broker=app.config['CELERY_BROKER_URL'])
     celery.conf.update(app.config)
+
     TaskBase = celery.Task
 
     class ContextTask(TaskBase):
