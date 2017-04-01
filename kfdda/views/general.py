@@ -50,6 +50,13 @@ class ExceptionView(MethodView):
         assert 1 == 2
         return '1 == 2'
 
+class LoggerView(MethodView):
+    def get(self):
+        logger.debug('log level debug')
+        logger.info('log level info')
+        logger.warn('log level warn')
+        logger.error('log level error')
+        return 'ok'
 
 bp.add_url_rule('/', view_func=IndexView.as_view('index'))
 bp.add_url_rule('/add', view_func=AddView.as_view('error'))
@@ -57,3 +64,4 @@ bp.add_url_rule('/form-error', view_func=FormErrorView.as_view('form_error'))
 bp.add_url_rule('/celery-test',
                 view_func=CeleryTestView.as_view('celery_test'))
 bp.add_url_rule('/exception', view_func=ExceptionView.as_view('excepiton'))
+bp.add_url_rule('/log', view_func=LogView.as_view('log'))
