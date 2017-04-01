@@ -4,6 +4,7 @@
 class Config(object):
     DEBUG = False
     SECRET_KEY = '\xd4m1<w\x15\xe2?\x1e\xe3'
+    LOGGER_HANDLER_POLICY = 'always'
 
     # Flask-SQLAlchemy config
     SQLALCHEMY_TRACK_MODIFICATIONS = True
