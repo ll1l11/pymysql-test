@@ -2,7 +2,7 @@
 from flask import Blueprint
 from flask.views import MethodView
 
-from ..core import db
+from ..core import db, logger
 from ..exceptions import NoError, FormValidationError
 
 from ..forms.login import LoginForm
@@ -46,6 +46,7 @@ class CeleryTestView(MethodView):
 
 class ExceptionView(MethodView):
     def get(self):
+        logger.error('this is error')
         assert 1 == 2
         return '1 == 2'
 
