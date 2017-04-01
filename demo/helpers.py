@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+"""
+    demo.helpers
+    ~~~~~~~~~~~~
+
+    flask-demo helpers module
+
+    :copyright: (c) 2016 by codeif.
+    :license: MIT, see LICENSE for more details.
+"""
+
 import importlib
 from datetime import datetime, date, time
 from numbers import Number

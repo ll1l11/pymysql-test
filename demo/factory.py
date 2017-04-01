@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+"""
+    demo.factory
+    ~~~~~~~~~~~~
+
+    flask-demo factory module
+
+    :copyright: (c) 2016 by codeif.
+    :license: MIT, see LICENSE for more details.
+"""
+
 import os
 from celery import Celery
 from flask import Flask

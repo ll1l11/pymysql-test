@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+"""
+    demo.exceptions
+    ~~~~~~~~~~~~
+
+    flask-demo exceptions module
+
+    :copyright: (c) 2016 by codeif.
+    :license: MIT, see LICENSE for more details.
+"""
+
 import sys
 
 current_module = sys.modules[__name__]

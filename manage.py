@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+"""
+    manage
+    ~~~~~~~~~~~~
+
+    manage module
+
+    :copyright: (c) 2016 by codeif.
+    :license: MIT, see LICENSE for more details.
+"""
+
 from flask_script import Manager, Server
 from flask_migrate import MigrateCommand
 

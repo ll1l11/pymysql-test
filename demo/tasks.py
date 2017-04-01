@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+"""
+    demo.tasks
+    ~~~~~~~~~~~~
+
+    flask-demo tasks module
+
+    :copyright: (c) 2016 by codeif.
+    :license: MIT, see LICENSE for more details.
+"""
+
 from datetime import datetime
 
 from .core import logger
