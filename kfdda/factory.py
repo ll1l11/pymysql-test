@@ -13,13 +13,17 @@ import os
 from celery import Celery
 from flask import Flask
 
+from ..core import db
+
 
 def create_app(config=None):
     app = Flask(__name__)
 
     if config is None:
-        config = os.environ.get('DEMO_APP_SETTINGS', 'kfdda.config.Config')
+        config = os.environ.get('KFDDA_APP_SETTINGS', 'kfdda.config.Config')
     app.config.from_object(config)
+
+    db.init_app(app)
 
     return app
 

@@ -1,6 +1,7 @@
 Flask
 Flask-Script
 Flask-Migrate
+PyMySQL
 Flask-SQLAlchemy
 Flask-Bootstrap
 Flask-Login

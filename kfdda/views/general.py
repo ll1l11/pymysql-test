@@ -2,9 +2,11 @@
 from flask import Blueprint
 from flask.views import MethodView
 
-from ..exceptions import NoError, LoginRequired, FormValidationError
+from ..core import db
+from ..exceptions import NoError, FormValidationError
 
 from ..forms.login import LoginForm
+from ..models.user import User
 from ..tasks import add
 
 
@@ -13,12 +15,19 @@ bp = Blueprint('general', __name__)
 
 class IndexView(MethodView):
     def get(self):
-        raise NoError()
+        users = User.query.all()
+        return ''.join(x.phone for x in users)
 
 
-class ErrorView(MethodView):
+class AddView(MethodView):
     def get(self):
-        raise LoginRequired()
+        phone = '13800138000'
+        email = 'me@codeif.com'
+        password = '123456'
+        user = User(phone=phone, email=email, password=password)
+        db.session.add(user)
+        db.session.commit()
+        return 'ok'
 
 
 class FormErrorView(MethodView):
@@ -36,7 +45,7 @@ class CeleryTestView(MethodView):
 
 
 bp.add_url_rule('/', view_func=IndexView.as_view('index'))
-bp.add_url_rule('/error', view_func=ErrorView.as_view('error'))
+bp.add_url_rule('/add', view_func=AddView.as_view('error'))
 bp.add_url_rule('/form-error', view_func=FormErrorView.as_view('form_error'))
 bp.add_url_rule('/celery-test',
                 view_func=CeleryTestView.as_view('celery_test'))

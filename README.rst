@@ -31,7 +31,7 @@ secret_key生成方式::
 Celery的supervisor配置::
 
     [program:kfdda-celery]
-    environment=DEMO_APP_SETTINGS="kfdda.config.ProductionConfig"
+    environment=KFDDA_APP_SETTINGS="kfdda.config.ProductionConfig"
     command=/home/ubuntu/.virtualenvs/kfdda/bin/celery -A kfdda.tasks worker --loglevel=INFO
 
     directory=/srv/kfdda/www
