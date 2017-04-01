@@ -9,6 +9,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@127.0.0.1/kfdda'
     SQLALCHEMY_ECHO = False
+    SQLALCHEMY_POOL_RECYCLE = 10
 
     # Celery config
     CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'
