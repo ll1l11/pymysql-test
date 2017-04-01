@@ -50,7 +50,7 @@ class ExceptionView(MethodView):
         assert 1 == 2
         return '1 == 2'
 
-class LoggerView(MethodView):
+class LogView(MethodView):
     def get(self):
         logger.debug('log level debug')
         logger.info('log level info')
