@@ -13,7 +13,7 @@ import os
 from celery import Celery
 from flask import Flask
 
-from ..core import db
+from .core import db
 
 
 def create_app(config=None):
