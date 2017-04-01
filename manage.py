@@ -12,8 +12,8 @@
 from flask_script import Manager, Server
 from flask_migrate import MigrateCommand
 
-from demo import create_app
-from demo.core import db
+from kfdda import create_app
+from kfdda.core import db
 
 
 manager = Manager(create_app)

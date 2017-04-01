@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    demo.core
+    kfdda.core
     ~~~~~~~~~~~~
 
-    flask-demo core module
+    flask-kfdda core module
 
     :copyright: (c) 2016 by codeif.
     :license: MIT, see LICENSE for more details.

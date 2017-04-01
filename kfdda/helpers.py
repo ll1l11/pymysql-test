@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    demo.helpers
+    kfdda.helpers
     ~~~~~~~~~~~~
 
-    flask-demo helpers module
+    flask-kfdda helpers module
 
     :copyright: (c) 2016 by codeif.
     :license: MIT, see LICENSE for more details.

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    demo.tasks
+    kfdda.tasks
     ~~~~~~~~~~~~
 
-    flask-demo tasks module
+    flask-kfdda tasks module
 
     :copyright: (c) 2016 by codeif.
     :license: MIT, see LICENSE for more details.

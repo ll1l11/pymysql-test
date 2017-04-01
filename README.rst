@@ -3,7 +3,7 @@ Flask-Demo
 
 测试服运行::
 
-    python manage.py [-c demo.config.YourConfig] runsert -p 8080
+    python manage.py [-c kfdda.config.YourConfig] runsert -p 8080
 
 正式服可以使用uwsgi
 
@@ -30,15 +30,15 @@ secret_key生成方式::
 
 Celery的supervisor配置::
 
-    [program:demo-celery]
-    environment=DEMO_APP_SETTINGS="demo.config.ProductionConfig"
-    command=/home/ubuntu/.virtualenvs/demo/bin/celery -A demo.tasks worker --loglevel=INFO
+    [program:kfdda-celery]
+    environment=DEMO_APP_SETTINGS="kfdda.config.ProductionConfig"
+    command=/home/ubuntu/.virtualenvs/kfdda/bin/celery -A kfdda.tasks worker --loglevel=INFO
 
-    directory=/srv/demo/www
+    directory=/srv/kfdda/www
     user=www-data
     numprocs=1
-    stdout_logfile=/var/log/celery/demo-stdout.log
-    stderr_logfile=/var/log/celery/demo-stderr.log
+    stdout_logfile=/var/log/celery/kfdda-stdout.log
+    stderr_logfile=/var/log/celery/kfdda-stderr.log
     autostart=true
     autorestart=true
     startsecs=10

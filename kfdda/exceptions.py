@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    demo.exceptions
+    kfdda.exceptions
     ~~~~~~~~~~~~
 
-    flask-demo exceptions module
+    flask-kfdda exceptions module
 
     :copyright: (c) 2016 by codeif.
     :license: MIT, see LICENSE for more details.

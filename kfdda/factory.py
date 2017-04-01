@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    demo.factory
+    kfdda.factory
     ~~~~~~~~~~~~
 
-    flask-demo factory module
+    flask-kfdda factory module
 
     :copyright: (c) 2016 by codeif.
     :license: MIT, see LICENSE for more details.
@@ -18,7 +18,7 @@ def create_app(config=None):
     app = Flask(__name__)
 
     if config is None:
-        config = os.environ.get('DEMO_APP_SETTINGS', 'demo.config.Config')
+        config = os.environ.get('DEMO_APP_SETTINGS', 'kfdda.config.Config')
     app.config.from_object(config)
 
     return app
