@@ -38,4 +38,5 @@ class CeleryTestView(MethodView):
 bp.add_url_rule('/', view_func=IndexView.as_view('index'))
 bp.add_url_rule('/error', view_func=ErrorView.as_view('error'))
 bp.add_url_rule('/form-error', view_func=FormErrorView.as_view('form_error'))
-bp.add_url_rule('/celery-test', view_func=CeleryTestView.as_view('celery_test'))
+bp.add_url_rule('/celery-test',
+                view_func=CeleryTestView.as_view('celery_test'))
