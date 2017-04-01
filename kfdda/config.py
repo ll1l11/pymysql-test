@@ -6,7 +6,7 @@ class Config(object):
     SECRET_KEY = '\xd4m1<w\x15\xe2?\x1e\xe3'
 
     # Flask-SQLAlchemy config
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@127.0.0.1/kfdda'
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_POOL_RECYCLE = 10
