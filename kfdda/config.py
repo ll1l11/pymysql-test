@@ -2,7 +2,7 @@
 
 
 class Config(object):
-    DEBUG = False
+    DEBUG = True
     SECRET_KEY = '\xd4m1<w\x15\xe2?\x1e\xe3'
 
     # Flask-SQLAlchemy config

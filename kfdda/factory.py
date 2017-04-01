@@ -10,6 +10,8 @@
 """
 
 import os
+import logging
+
 from celery import Celery
 from flask import Flask
 
@@ -23,7 +25,10 @@ def create_app(config=None):
         config = os.environ.get('KFDDA_APP_SETTINGS', 'kfdda.config.Config')
     app.config.from_object(config)
 
-    db.init_app(app)
+    # logger settings
+    # handler = logging.StreamHandler()
+
+    # db.init_app(app)
 
     return app
 
